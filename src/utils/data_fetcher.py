@@ -1,12 +1,19 @@
-from pycoingecko import CoinGeckoAPI
+import requests
 
 class CryptoFetcher:
-    def __init__(self):
-        self.api = CoinGeckoAPI()
-    
-    def fetch_price(self, crypto_id):
+    def fetch_top_7_coins(self):
+        url = 'https://api.coingecko.com/api/v3/coins/markets'
+        params = {
+            'vs_currency': 'usd',  # Valuta: USD
+            'order': 'market_cap_desc',  # Sortera efter market cap fallande
+            'per_page': 7,  # Hämta 7 coins
+            'page': 1,  # Första sidan
+            'sparkline': False  # Inga grafer behövs
+        }
         try:
-            data = self.api.get_price(ids=crypto_id, vs_currencies='usd')
-            return data.get(crypto_id, {}).get('usd')
-        except Exception as e:
-            raise ValueError(f"Error fetching price: {e}")
+            response = requests.get(url, params=params)
+            response.raise_for_status()  # Kastar fel om inte 200 OK
+            return response.json()  # Returnerar lista med dicts (coins)
+        except requests.exceptions.RequestException as e:
+            print(f"Error fetching data from CoinGecko: {e}")
+            return None
