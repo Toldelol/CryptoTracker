@@ -1,4 +1,4 @@
-from coingecko import CoinGeckoAPI
+from pycoingecko import CoinGeckoAPI
 
 class CryptoFetcher:
     def __init__(self):
