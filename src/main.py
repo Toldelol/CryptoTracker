@@ -1,8 +1,8 @@
 import sys
 import os
+
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
-print("sys.path:", sys.path)
-print("Current scrip dir:", os.path.dirname(os.path.abspath(__file__)))
+
 from utils.logger import setup_logger
 from utils.data_fetcher import CryptoFetcher
 from utils.data_processor import process_data
