@@ -5,7 +5,7 @@ def setup_logger():
     logger = logging.getLogger('CryptoTracker')
     logger.setLevel(logging.DEBUG)
     
-    # Filhandler
+    # Filehandler
     file_handler = logging.FileHandler(LOG_FILE)
     file_handler.setLevel(logging.DEBUG)
     formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(message)s')
@@ -17,5 +17,4 @@ def setup_logger():
     console_handler.setLevel(logging.INFO)
     console_handler.setFormatter(formatter)
     logger.addHandler(console_handler)
-    
     return logger
