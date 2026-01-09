@@ -1,5 +1,5 @@
 import logging
-from ..config import LOG_FILE  # Importerar LOG_FILE från config.py
+from config import LOG_FILE  # Importerar LOG_FILE från config.py
 
 def setup_logger():
     logging.basicConfig(
